@@ -14,7 +14,7 @@ export const lightTheme = responsiveFontSizes(createMuiTheme({
   overrides: {
     MuiAppBar: {
       root: {
-        background: "#87CEEB !important",
+        background: "#FFFFFF !important",
       },
     },
   },
@@ -28,7 +28,7 @@ export const lightTheme = responsiveFontSizes(createMuiTheme({
   palette: {
     type: "light",
     primary: {
-      light: "#53CBC9",
+      light: "#F8F9FA",
       main: "#1E90FF",
       //dark: "#E0FFFF",
       contrastText: "#fff",
@@ -51,8 +51,8 @@ export const darkTheme = responsiveFontSizes(createMuiTheme({
   palette: {
     type: "dark",
     background: {
-      default: grey[900],
-      paper: grey[800],
+      default: '#212B43',
+      paper: '#171F32',
     },
   },
   overrides: {
@@ -64,6 +64,11 @@ export const darkTheme = responsiveFontSizes(createMuiTheme({
     MuiTypography: {
       root: {
         color: grey[400],
+      },
+    },
+    MuiAppBar: {
+      root: {
+        background: "#171F32 !important",
       },
     },
   },

@@ -18,3 +18,7 @@ body {
   background: #ddd;
   border-radius: 5px;
 }
+
+.MuiAppBar-colorDefault{
+  box-shadow: 0px 4px 16px rgba(20, 92, 143, 0.08);
+}

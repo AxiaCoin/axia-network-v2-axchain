@@ -4,7 +4,7 @@ import Link from "@material-ui/core/Link";
 import { hexToDate, hexToNumber, hexToString } from "@etclabscore/eserialize";
 import { Link as RouterLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-
+import './blocklist.scss';
 const rightPaddingFix = {
   paddingRight: "24px",
 };
@@ -28,7 +28,7 @@ function BlockList({ blocks }: any) {
             <TableCell><Typography>{t("#Txs")}</Typography></TableCell>
             <TableCell><Typography>{t("Gas Usage")}</Typography></TableCell>
             <TableCell><Typography>{t("Gas Limit")}</Typography></TableCell>
-            <TableCell><Typography>{t("Uncles")}</Typography></TableCell>
+            {/* <TableCell><Typography>{t("Uncles")}</Typography></TableCell> */}
             <TableCell><Typography>{t("Hash")}</Typography></TableCell>
           </TableRow>
         </TableHead>
@@ -45,6 +45,9 @@ function BlockList({ blocks }: any) {
             // Colorize left border derived from author credit account.
             const authorHashStyle = {
               //borderLeft: `1em solid #${b.miner.substring(2, 8)}`,
+              borderTop: '1.5px solid #CDE6F6',
+              borderBottom: '1.5px solid #CDE6F6'
+
             };
 
             // Tally transactions which create contracts vs transactions with addresses.
@@ -114,14 +117,14 @@ function BlockList({ blocks }: any) {
                   <Typography>{txTypes.transact}</Typography>
                 </TableCell>
                 <TableCell style={rightPaddingFix}>
-                  <LinearProgress value={filledPercent} variant="determinate" />
+                  <LinearProgress style={{borderRadius: '5px', height: '8px'}} color="primary" value={filledPercent} variant="determinate" />
                 </TableCell>
                 <TableCell>
                   <Typography>{hexToNumber(b.gasLimit)}</Typography>
                 </TableCell>
-                <TableCell>
+                {/* <TableCell>
                   <Typography>{b.uncles.length === 0 ? "" : b.uncles.length}</Typography>
-                </TableCell>
+                </TableCell> */}
                 <TableCell style={rightPaddingFix}>
                   <Link
                     component={({ className, children }: { children: any, className: string }) => (

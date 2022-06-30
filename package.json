@@ -69,6 +69,7 @@
     "@types/react-router-dom": "^5.1.1",
     "@types/victory": "^31.0.19",
     "react-scripts": "^3.4.3",
+    "sass": "^1.53.0",
     "ts-jest": "^24.1.0",
     "ts-node": "^8.5.0",
     "tslint": "^5.8.0",

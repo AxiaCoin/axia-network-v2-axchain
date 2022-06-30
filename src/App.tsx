@@ -8,6 +8,7 @@ import {
   InputBase,
   Tooltip,
   CircularProgress,
+  Button,
 } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 import Link from "@material-ui/core/Link";
@@ -53,7 +54,7 @@ import useChainListStore from "./stores/useChainListStore";
 import useEthRPCStore from "./stores/useEthRPCStore";
 import AddChain from "./components/AddChain/AddChain";
 import { NetworkWifi } from "@material-ui/icons";
-
+import logo from "./Logo.svg";
 const history = createPreserveQueryHistory(createBrowserHistory, [
   "network",
   "rpcUrl",
@@ -64,7 +65,7 @@ function App(props: any) {
   const darkMode = useDarkMode();
   const [search, setSearch] = useState();
   const theme = darkMode.value ? darkTheme : lightTheme;
-
+  const inputBoxBorder = theme === darkTheme ? '#212B43' : '#EDEEF5';
   const [selectedChain, setSelectedChain] = useState<Chain>();
   const [chains, setChains] = useChainListStore<[Chain[], Dispatch<Chain[]>]>();
   const [ethRPC, setEthRPCChain] = useEthRPCStore();
@@ -266,21 +267,21 @@ function App(props: any) {
                         alt="expedition-logo"
                         height="30"
                         style={{ marginRight: "10px" }}
-                        src={expeditionLogo}
+                        src={logo}
                       />
-                    </Grid>
-                    <Grid>
-                      <Typography color="textSecondary" variant="h6">
-                        {t("AXChain Explorer")}
-                      </Typography>
                     </Grid>
                   </Grid>
                 </Link>
               </Grid>
-              <Grid item md={6} xs={12}>
+              <Grid
+                style={{ border: "1.6px solid "+ inputBoxBorder }}
+                item
+                md={6}
+                xs={12}
+              >
                 <InputBase
                   placeholder={t(
-                    "Enter an Address, Transaction Hash or Block Number"
+                    "Search by address, transaction hash or block number"
                   )}
                   onKeyDown={(event: KeyboardEvent<HTMLInputElement>) => {
                     if (event.keyCode === 13) {
@@ -295,7 +296,6 @@ function App(props: any) {
                   }}
                   fullWidth
                   style={{
-                    background: "rgba(0,0,0,0.1)",
                     borderRadius: "4px",
                     padding: "5px 10px 0px 10px",
                     marginRight: "5px",
@@ -313,7 +313,7 @@ function App(props: any) {
                   <>
                     {query && query.rpcUrl && (
                       <Tooltip title={query.rpcUrl}>
-                        <IconButton >
+                        <IconButton>
                           <NetworkWifi />
                         </IconButton>
                       </Tooltip>
@@ -321,14 +321,15 @@ function App(props: any) {
                     {!query.rpcUrl && <CircularProgress />}
                   </>
                 )}
-                <Tooltip title={t("Add custom chain") as string}>
+                {/* <Tooltip title={t("Add custom chain") as string}>
                   <IconButton onClick={openAddChainModal}>
                     <PlaylistAddIcon />
                   </IconButton>
-                </Tooltip>
+                </Tooltip> */}
                 <LanguageMenu />
                 <Tooltip title={t("AXIA Documentation") as string}>
-                  <IconButton
+                  <Button
+                    variant="text"
                     onClick={
                       () =>
                         window.open(
@@ -336,21 +337,20 @@ function App(props: any) {
                         ) //tslint:disable-line
                     }
                   >
-                    <NotesIcon />
-                  </IconButton>
+                    AXIA Documentation
+                  </Button>
                 </Tooltip>
-               {/* 
                 <Tooltip title={t("AXIA Explorer Github") as string}>
-                  <IconButton
+                  <Button variant="text"
                     onClick={() =>
                       window.open("https://github.com/AXIA-DEV/AXIA-Block-Explorer")
                     }
                   >
-                    <CodeIcon />
-                  </IconButton>
+                    Explorer Github
+                  </Button>
                 </Tooltip>
-                */}
-                
+               
+
                 <Tooltip title={t("Toggle Dark Mode") as string}>
                   <IconButton onClick={darkMode.toggle}>
                     {darkMode.value ? <Brightness3Icon /> : <WbSunnyIcon />}
@@ -365,7 +365,7 @@ function App(props: any) {
           onCancel={cancelAddChainDialog}
           onSubmit={submitAddChainDialog}
         />
-        <div style={{ margin: "0px 25px 0px 25px" }}>
+        <div style={{ margin: "0px 50px" }}>
           <QueryParamProvider ReactRouterRoute={Route}>
             <CssBaseline />
             <Switch>
