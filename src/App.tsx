@@ -352,8 +352,7 @@ function App(props: any) {
                     variant="text"
                     onClick={() =>
                       window.open(
-                        "https://github.com/AXIA-DEV/AXIA-Block-Explorer"
-                      )
+                        "https://github.com/AxiaCoin/axia-network-v2-axchain.git"                      )
                     }
                   >
                     Explorer Github

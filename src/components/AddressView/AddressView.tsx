@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Typography, Card, CardContent, Grid } from "@material-ui/core";
 import { useTranslation } from "react-i18next";
-
+import useDarkMode from "use-dark-mode";
 export interface IAddressViewProps {
   address: string;
   balance: string;
@@ -14,13 +14,32 @@ const style = {
   borderRadius: "12px",
 };
 
-const heading = {
-  fontSize: "12px",
-  color: "#313F61",
-  marginBottom: "40px",
-};
 function AddressView(props: IAddressViewProps) {
   const { address, balance, txCount, code, blockNumber } = props;
+  const darkMode = useDarkMode();
+
+  const heading = darkMode.value
+    ? {
+        fontSize: "12px",
+        color: "#838FAE",
+        margin: "40px 0",
+      }
+    : {
+        fontSize: "12px",
+        color: "#313F61",
+        margin: "40px 0",
+      };
+  const codeStyle = darkMode.value
+    ? {
+        fontSize: "12px",
+        color: "#838FAE",
+        margin: "15px",
+      }
+    : {
+        fontSize: "12px",
+        color: "#313F61",
+        margin: "15px",
+      };
   const { t } = useTranslation();
   return (
     <div>
@@ -29,22 +48,14 @@ function AddressView(props: IAddressViewProps) {
         <CardContent>
           <Grid container justifyContent="space-between">
             <Typography variant="h6">
-              {t("Address")}:
-              <Typography variant="h6">
-              {address}
-            </Typography>
+              {t("Address")}:<Typography variant="h6">{address}</Typography>
             </Typography>
             <Typography variant="h6">
-              {t("Balance")}:
-              <Typography variant="h6">
-              {balance}
-            </Typography>
+              {t("Balance")}:<Typography variant="h6">{balance}</Typography>
             </Typography>
             <Typography variant="h6">
               {t("Transactions")}:
-              <Typography variant="h6">
-              {txCount}
-            </Typography>
+              <Typography variant="h6">{txCount}</Typography>
             </Typography>
           </Grid>
           <br />
@@ -54,8 +65,8 @@ function AddressView(props: IAddressViewProps) {
               border: "1px solid #CDE6F6",
             }}
           />
-          <div style={{margin: '15px'}}>
-            <div style={{ fontSize: '12px', color: '#313F61'}}>
+          <div style={codeStyle}>
+            <div>
               {t("Code")} : {code}{" "}
             </div>
           </div>

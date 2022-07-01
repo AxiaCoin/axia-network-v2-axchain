@@ -71,6 +71,11 @@ export const darkTheme = responsiveFontSizes(createMuiTheme({
         background: "#171F32 !important",
       },
     },
+    MuiLinearProgress: {
+      root: {
+        background: '#171F32 !important',
+      },
+    },
   },
 }));
 
