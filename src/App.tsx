@@ -60,8 +60,7 @@ import AddChain from "./components/AddChain/AddChain";
 import { NetworkWifi } from "@material-ui/icons";
 import logo from "./Logo.svg";
 import { dark } from "@material-ui/core/styles/createPalette";
-import LightModeIcon from '@material-ui/icons';
-import ModeNightIcon from '@material-ui/icons';
+
 const history = createPreserveQueryHistory(createBrowserHistory, [
   "network",
   "rpcUrl",
@@ -362,7 +361,7 @@ function App(props: any) {
                 </Tooltip>
 
                 <Tooltip title={t("Toggle Dark Mode") as string}>
-                <SwitchMUI {...labelSwitch} onChange={darkMode.toggle}/>
+                <SwitchMUI className={darkMode.value ? 'darkButton' : 'lightButton'} {...labelSwitch} onChange={darkMode.toggle}/>
                 </Tooltip>
               </Grid>
             </Grid>

@@ -22,3 +22,21 @@ body {
 .MuiAppBar-colorDefault{
   box-shadow: 0px 4px 16px rgba(20, 92, 143, 0.08);
 }
+
+.darkButton {
+  .MuiSwitch-thumb{
+    background:  #004373 url(./icons/Moon.svg) no-repeat center;
+
+  }
+  .MuiSwitch-track{
+    background: linear-gradient(96.09deg, #178FE1 0%, #66CFB2 100%);
+  }
+}
+
+.lightButton {
+  .MuiSwitch-thumb{
+    background:  #FFF url(./icons/Sun.svg) no-repeat center;
+  }
+  .MuiSwitch-track{
+    background: linear-gradient(96.09deg, #178FE1 0%, #66CFB2 100%);  }
+}
