@@ -24,6 +24,13 @@ import {
   IsSyncingResult as ISyncing,
 } from "@etclabscore/ethereum-json-rpc";
 import "./Dashboard.scss";
+import useDarkMode from "use-dark-mode";
+import barcodeIcon from "../icons/barcode.svg";
+import blockHeightIcon from "../icons/blockHeight.svg";
+import gasPriceIcon from "../icons/gasPrice.svg";
+import networkIcon from "../icons/network.svg";
+import peersIcon from "../icons/peers.svg";
+
 const useState = React.useState;
 
 const config = {
@@ -44,6 +51,8 @@ export default (props: any) => {
   const [gasPrice, setGasPrice] = useState<string>();
   const [syncing, setSyncing] = useState<ISyncing>();
   const [peerCount, setPeerCount] = useState<string>();
+  const darkMode = useDarkMode();
+  const setClass = darkMode.value ? "items dark" : "items light";
 
   const { t } = useTranslation();
 
@@ -126,12 +135,14 @@ export default (props: any) => {
     <div className="dashboard">
       <Grid container spacing={3} direction="column">
         <Grid className="item-container" item container justify="space-between">
-          <Grid className="items" item key="blockHeight">
+          <Grid className={setClass} item key="blockHeight">
+            <img src={blockHeightIcon} />
             <ChartCard title={t("Block Height")}>
               <Typography variant="h4">{blockNumber}</Typography>
             </ChartCard>
           </Grid>
-          <Grid className="items" key="chainId" item>
+          <Grid className={setClass} key="chainId" item>
+            <img src={barcodeIcon} />
             <ChartCard title={t("Chain ID")}>
               <Typography variant="h4">{hexToNumber(chainId)}</Typography>
             </ChartCard>
@@ -148,25 +159,28 @@ export default (props: any) => {
               </ChartCard>
             </div>
           )}
-          <Grid className="items" key="gasPrice" item>
+          <Grid className={setClass} key="gasPrice" item>
+            <img src={gasPriceIcon} />
             <ChartCard title={t("Gas Price")}>
               <Typography variant="h4">
-                {weiToGwei(hexToNumber(gasPrice))} Gwei
+                {weiToGwei(hexToNumber(gasPrice))} <span style={{fontSize: '16px'}}>Gwei</span>
               </Typography>
             </ChartCard>
           </Grid>
-          <Grid className="items" key="hRate" item>
+          <Grid className={setClass} key="hRate" item>
+            <img src={networkIcon} />
             <ChartCard title={t("Network Hash Rate")}>
               {block && (
                 <HashRate block={block} blockTime={config.blockTime}>
                   {(hashRate: any) => (
-                    <Typography variant="h4">{hashRate} GH/s</Typography>
+                    <Typography variant="h4">{hashRate}<span style={{fontSize: '16px'}}>GH/s</span></Typography>
                   )}
                 </HashRate>
               )}
             </ChartCard>
           </Grid>
-          <Grid className="items" key="peers" item>
+          <Grid className={setClass} key="peers" item>
+            <img src={peersIcon} />
             <ChartCard title={t("Peers")}>
               <Typography variant="h4">{hexToNumber(peerCount)}</Typography>
             </ChartCard>

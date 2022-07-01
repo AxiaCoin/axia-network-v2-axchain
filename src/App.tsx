@@ -9,9 +9,12 @@ import {
   Tooltip,
   CircularProgress,
   Button,
+  FormControlLabel,
+  FormGroup,
 } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 import Link from "@material-ui/core/Link";
+import { styled } from "@material-ui/styles";
 import React, {
   Dispatch,
   ChangeEvent,
@@ -19,9 +22,10 @@ import React, {
   useState,
   useEffect,
 } from "react";
+import { Switch as SwitchMUI, SwitchProps } from "@material-ui/core";
 import { Link as RouterLink, Router, Route, Switch } from "react-router-dom";
 import useDarkMode from "use-dark-mode";
-import "./App.css";
+import "./App.scss";
 import Address from "./containers/Address";
 import Block from "./containers/Block";
 import Dashboard from "./containers/Dashboard";
@@ -55,6 +59,9 @@ import useEthRPCStore from "./stores/useEthRPCStore";
 import AddChain from "./components/AddChain/AddChain";
 import { NetworkWifi } from "@material-ui/icons";
 import logo from "./Logo.svg";
+import { dark } from "@material-ui/core/styles/createPalette";
+import LightModeIcon from '@material-ui/icons';
+import ModeNightIcon from '@material-ui/icons';
 const history = createPreserveQueryHistory(createBrowserHistory, [
   "network",
   "rpcUrl",
@@ -65,10 +72,11 @@ function App(props: any) {
   const darkMode = useDarkMode();
   const [search, setSearch] = useState();
   const theme = darkMode.value ? darkTheme : lightTheme;
-  const inputBoxBorder = theme === darkTheme ? '#212B43' : '#EDEEF5';
+  const inputBoxBorder = theme === darkTheme ? "#212B43" : "#EDEEF5";
   const [selectedChain, setSelectedChain] = useState<Chain>();
   const [chains, setChains] = useChainListStore<[Chain[], Dispatch<Chain[]>]>();
   const [ethRPC, setEthRPCChain] = useEthRPCStore();
+  const labelSwitch = { inputProps: { 'aria-label': 'Switch demo' } };
 
   const [addChainDialogIsOpen, setAddChainDialogIsOpen] =
     useState<boolean>(false);
@@ -274,7 +282,7 @@ function App(props: any) {
                 </Link>
               </Grid>
               <Grid
-                style={{ border: "1.6px solid "+ inputBoxBorder }}
+                style={{ border: "1.6px solid " + inputBoxBorder }}
                 item
                 md={6}
                 xs={12}
@@ -341,20 +349,20 @@ function App(props: any) {
                   </Button>
                 </Tooltip>
                 <Tooltip title={t("AXIA Explorer Github") as string}>
-                  <Button variant="text"
+                  <Button
+                    variant="text"
                     onClick={() =>
-                      window.open("https://github.com/AXIA-DEV/AXIA-Block-Explorer")
+                      window.open(
+                        "https://github.com/AXIA-DEV/AXIA-Block-Explorer"
+                      )
                     }
                   >
                     Explorer Github
                   </Button>
                 </Tooltip>
-               
 
                 <Tooltip title={t("Toggle Dark Mode") as string}>
-                  <IconButton onClick={darkMode.toggle}>
-                    {darkMode.value ? <Brightness3Icon /> : <WbSunnyIcon />}
-                  </IconButton>
+                <SwitchMUI {...labelSwitch} onChange={darkMode.toggle}/>
                 </Tooltip>
               </Grid>
             </Grid>

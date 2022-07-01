@@ -34,7 +34,7 @@ export const lightTheme = responsiveFontSizes(createMuiTheme({
       contrastText: "#fff",
     },
     background: {
-      paper: "#4682B4",
+      paper: "#FFFFFF",
     },
   },
 }));

@@ -6,9 +6,19 @@
       gap: 16px;
       width: 192px;
       height: 176px;
-      background: #ffffff;
       box-shadow: 0px 4px 16px rgba(20, 92, 143, 0.08);
       border-radius: 12px;
+      font-size: 16px !important;
+    }
+    .dark{
+      background-color: #171F32;
+    }
+    .light{
+      background-color: #FFFFFF;
+    }
+    img{
+      margin-bottom: -15px;
+      padding-left: 15px;
     }
   }
 }

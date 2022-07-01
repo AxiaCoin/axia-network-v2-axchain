@@ -1,12 +1,24 @@
+
+$color : linear-gradient(96.09deg, #178FE1 0%, #66CFB2 100%) !important;
 .statCharts {
   width: 100% !important;
   margin: 30px 0 0 0 !important;
   .items {
     padding: 24px;
     gap: 16px;
-    background: #ffffff;
-    box-shadow: 0px 4px 16px rgba(20, 92, 143, 0.08);
     border-radius: 12px;
     max-width: 20%;
+    box-shadow: 0px 4px 16px rgba(20, 92, 143, 0.08);
   }
-}
+  .dark{
+    background-color: #171F32;
+  }
+  .light{
+    background-color: #FFFFFF;
+  }
+  svg{
+    path{
+      fill: #3FAFCA !important;
+      stroke: #3FAFCA !important; 
+  }
+}}

@@ -1,0 +1,29 @@
+.blockRawLight {
+  .monaco-editor {
+    background: #f0f4f8 !important;
+    border-radius: 12px !important;
+  }
+  section{
+    border-radius: 12px !important;
+    border: 1px solid #cde6f6 !important;
+    padding: 5px;
+  }
+  .monaco-editor.no-user-select .lines-content, .monaco-editor.no-user-select .view-line, .monaco-editor.no-user-select .view-lines, .margin-view-overlays , .monaco-editor, section{
+    background: #f0f4f8 !important;
+  }
+}
+
+.blockRawDark {
+    .monaco-editor {
+      border-radius: 12px !important;
+    }
+    section{
+      border-radius: 12px !important;
+      border: 1px solid #313F61 !important;
+      padding: 5px;
+    }
+    .monaco-editor.no-user-select .lines-content, .monaco-editor.no-user-select .view-line, .monaco-editor.no-user-select .view-lines, .margin-view-overlays , .monaco-editor, section{
+      background: #171F32 !important;
+    }
+  }
+  
