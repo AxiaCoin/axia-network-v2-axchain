@@ -344,7 +344,7 @@ function App(props: any) {
                         ) //tslint:disable-line
                     }
                   >
-                    AXIA Documentation
+                  AXIA Documentation 
                   </Button>
                 </Tooltip>
                 <Tooltip title={t("AXIA Explorer Github") as string}>
