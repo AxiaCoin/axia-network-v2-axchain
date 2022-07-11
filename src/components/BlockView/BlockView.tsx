@@ -97,7 +97,8 @@ function BlockView(props: any) {
                     width: "150px",
                     alignSelf: "center",
                     marginRight: "10px",
-                    height: "6px",
+                    height: "8px",
+                    borderRadius: '12px'
                   }}
                   value={filledPercent}
                   variant="determinate"
