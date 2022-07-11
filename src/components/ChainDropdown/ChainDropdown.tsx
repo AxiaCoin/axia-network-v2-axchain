@@ -2,7 +2,7 @@ import * as React from "react";
 import { Menu, MenuItem, Tooltip, Button, Typography } from "@material-ui/core";
 import { useTranslation } from "react-i18next";
 import { IChain as Chain } from "../../models/chain";
-
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 interface IProps {
   chains: Chain[];
   selected: Chain;
@@ -32,7 +32,7 @@ const ChainDropdown: React.FC<IProps> = (props: IProps) => {
   return (
     <>
       <Tooltip title={t("Switch Chain") as string}>
-        <Button onClick={handleClick}>{selected.name}</Button>
+        <Button onClick={handleClick}>{selected.name}<ArrowDropDownIcon></ArrowDropDownIcon></Button>
       </Tooltip>
 
       <Menu

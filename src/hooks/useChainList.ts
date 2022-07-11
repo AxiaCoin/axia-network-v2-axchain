@@ -6,11 +6,18 @@ import React from "react";
 // const mergeChainSets = (c1: Chain[], c2: Chain[]) => uniqBy(c1.concat(c2), "name");
 
 export default function() {
-  const [chains, setChains] = React.useState<Chain[]>([
+  const [chains, setChains] = React.useState<Chain[]>([ 
+    
     {
-      name: "AXIA",
+      name: "Testnet",
       network: "testnet",
       rpc: ["https://1.p2p-v2.testnet.axiacoin.network/ext/bc/AX/rpc"],
+    },
+    
+    {
+      name: "Mainnet",
+      network: "mainnet",
+      rpc: ["https://1.p2p-v2.mainnet.axiacoin.network/ext/bc/AX/rpc"],
     },
   ]);
 

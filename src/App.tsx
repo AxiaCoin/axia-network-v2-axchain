@@ -341,10 +341,10 @@ function App(props: any) {
                       () =>
                         window.open(
                           "https://wiki.axiacoin.network/docs/learn-common-goods-chains"
-                        ) //tslint:disable-line
+                        ) //tslint:disableLine
                     }
                   >
-                  AXIA Documentation 
+                    AXIA Documentation 
                   </Button>
                 </Tooltip>
                 <Tooltip title={t("AXIA Explorer Github") as string}>
